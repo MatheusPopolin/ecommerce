@@ -42,12 +42,7 @@ function infoCarrinho(){
     }
 }
 
-
-
 function addCarrinho(item){
-    let tagUl = document.createElement("ul");
-    tagUl.classList.add("lista-carrinho");
-
     let tagLi     = document.createElement("li");
     let tagDiv1   = document.createElement("div");
     let tagImg    = document.createElement("img");
@@ -63,17 +58,25 @@ function addCarrinho(item){
     tagButton.innerText = "Remover Produto";
     tagButton.classList.add("botao-remover");
     tagButton.addEventListener("click", function(event){
-    event.path[2].remove();
     contador--;
-    total -= item.value; 
+    total -= item.value;
+    event.target.parentNode.parentNode.remove()
     infoCarrinho();
     }) 
     
     tagDiv1.appendChild(tagImg);
     tagDiv2.append(tagH3, tagP, tagButton);
     tagLi.append(tagDiv1, tagDiv2);
+
+    if(contador===0){
+        let tagUl = document.createElement("ul");
+        tagUl.classList.add("lista-carrinho");
+        tagUl.appendChild(tagLi);
+        document.querySelector(".carrinho").appendChild(tagUl);
+    }
+
+    let tagUl = document.querySelector(".lista-carrinho");
     tagUl.appendChild(tagLi);
-    document.querySelector(".carrinho").appendChild(tagUl);
     contador++;
     total += item.value;
     infoCarrinho();

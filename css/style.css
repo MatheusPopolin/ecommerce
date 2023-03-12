@@ -149,13 +149,18 @@ main.container{
 
 .lista-carrinho{
     width: 100%;
+    max-height: 300px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .lista-carrinho li{
     background-color: #F5F5F5;
     display: flex;
     align-items: center;
-    justify-content: space-evenly
+    justify-content: space-evenly;
 }
 
 .lista-carrinho img{
